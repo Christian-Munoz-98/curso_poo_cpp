@@ -12,11 +12,15 @@ struct persona
 
 int main()
 {
-    //persona *p = new persona();
+    //persona p = persona(); Memoria estatica
+    persona *p = new persona(); //Memoria Dinámica
 
-    persona p = persona();
-    p.nombre = "Christian";
-    p.edad = 23;
+    p->nombre = "Christian";
+    p->edad = 23;
 
-    cout << p.nombre << " Tiene " << p.edad << " Anos" << endl;
+    cout << p->nombre << " Tiene " << p->edad << " Anos" << endl;
+    cout << (int *) p << endl;
+    cout << (int *) &p->nombre << endl;
+    cout << (int *) &p->edad << endl;
+
 }
