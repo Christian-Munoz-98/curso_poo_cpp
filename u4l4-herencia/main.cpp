@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
+#include <locale.h>
 
 using namespace std;
 
 class Animal 
 { 
-private:
+protected:
     static int numero_animales;
-    string alimento;
+    string alimento="algo";
 
 public:
 
@@ -22,7 +23,7 @@ public:
 
     void comer()
     {
-        cout << "Este animal está comiendo" << alimento << "... ñom ñom" << endl;
+        cout << "Este animal esta comiendo " << alimento << "... nom nom" << endl;
     };
 };
 
@@ -45,13 +46,66 @@ int Animal::obtenerNumeroAnimales()
     return numero_animales;
 }
 
+class Herviboro : public Animal
+{
+public:
+    Herviboro() : Animal()
+    {
+        this->alimento = "plantas";
+    }
+
+    void pastar()
+    {
+        cout << "Este animal esta comiendo " << alimento << ". Esta pastando.." << endl;
+    }
+};
+
+class Carnivoro : public Animal
+{
+public:
+    Carnivoro() : Animal()
+    {
+        this->alimento = "carne";
+    }
+
+    void cazar()
+    {
+        cout << "Este animal esta comiendo " << alimento  << ". Este animal esta cazando..." << endl;
+    }
+};
+
+class Omnivoro : public Animal
+{
+public:
+    Omnivoro() : Animal()
+    {
+        this->alimento = "de todo";
+    }
+
+    void comer_comer()
+    {
+        cout << "Este animal esta comiendo " << alimento  << ". Este animal es omnivoro..." << endl;
+    }
+};
+
 int main()
 {
+    setlocale(LC_ALL,"spanish");
+
     Animal *a = new Animal();
+    Herviboro *h = new Herviboro();
+    Carnivoro *c = new Carnivoro();
+    Omnivoro *o = new Omnivoro();
 
     cout<< "Numero de Animales: "<< Animal::obtenerNumeroAnimales() << endl;
 
     a->comer();
+    
+    h->pastar();
+
+    c->cazar();
+
+    o->comer_comer();
 
     delete a;
 
