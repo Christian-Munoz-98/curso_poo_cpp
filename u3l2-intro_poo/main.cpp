@@ -22,6 +22,7 @@ int main()
     p2->nombre = "Ximena";
     p2->edad = 45; 
 
+    //normal
     p.saludar();
     cout << "Tengo "<< p.edad << " años" << endl;
 
